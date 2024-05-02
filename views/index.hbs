@@ -79,7 +79,7 @@
 
        <!-- Header-->
         <header class="bg-dark py-5" style="
-        background-image: url('/img/bg.jpg');
+        background-image: url('/img/bg2.jpg');
         background-size: cover; 
         background-position: center;">
         <div class="container px-5">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center mt-5"><img class="img-fluid rounded-3 my-5" src="/img/bg2.jpg" alt="..." /></div>
+                <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center mt-5"><img class="img-fluid rounded-3 my-5" src="/img/bg.jpg" alt="..." /></div>
             </div>
         </div>
         </header>
@@ -157,48 +157,39 @@
                 <!-- About Section Content-->
             <!-- Page Content-->
             <section class="py-5">
-                <div class="container px-5 my-5">
+                <div class="container px-5 my-2">
                     <div class="text-center mb-5">
                         <h1 class="fw-bolder">Our Work 
                             {{#if admin}}
-                            <a href="#"><i class="fa-solid fa-calendar-plus text-dark"></i></a>
+                            <a href="/images"><i class="fa-solid fa-calendar-plus text-dark"></i></a>
                             {{/if}}
                             </h1>
                         <p class="lead fw-normal text-dark mb-0">Company portfolio</p>
                     </div>
                     <div class="row gx-5">
-                     
+                      {{#if admin}}
+                        {{#each imagenes}}
                         <div class="col-lg-6">
-                            {{#if admin}}
-                            <a href="#"><i class="fa-solid fa-trash text-danger"></i></a>
-                            {{/if}}
+                            <a href="#" class="btn-close p-3"></a>
                             <div class="position-relative mb-5"> 
-                                <img class="img-fluid rounded-3 mb-3" src="/img/bg(3).jpg" alt="..." />
+                                <img class="img-fluid rounded-3 mb-3" src="data:image/jpeg;base64,{{this.imagen_base64}}" alt="imagen" />
                                 <p class="h3 fw-bolder text-decoration-none link-dark stretched-link">Project name</p>
                             </div>
                         </div>
-
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-3 mb-3" src="/img/bg(3).jpg" alt="..." />
-                                <a class="h3 fw-bolder text-decoration-none link-dark stretched-link">Project name</a>
+                        {{/each}}
+                        {{else}}
+                         {{#each imagenes}}
+                           <div class="col-lg-6">
+                            <div class="position-relative mb-5"> 
+                                <img class="img-fluid rounded-3 mb-3" src="data:image/jpeg;base64,{{this.imagen_base64}}" alt="imagen" />
+                                <p class="h3 fw-bolder text-decoration-none link-dark stretched-link">Project name</p>
                             </div>
                         </div>
-
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-5 mb-lg-0">
-                                <img class="img-fluid rounded-3 mb-3" src="/img/bg(3).jpg" alt="..." />
-                                <a class="h3 fw-bolder text-decoration-none link-dark stretched-link">Project name</a>
-                            </div>
+                        {{/each}}
+                        {{/if}}
+                          <div class="mt-5 p-5 bg-secondary rounded">
+                            <h4 class="text-center"><a href="" class="text-success" style="text-decoration: none;">Ver mas...</a></h4>
                         </div>
-
-                        <div class="col-lg-6">
-                            <div class="position-relative">
-                                <img class="img-fluid rounded-3 mb-3" src="/img/bg(3).jpg" alt="..." />
-                                <a class="h3 fw-bolder text-decoration-none link-dark stretched-link">Project name</a>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </section>
@@ -210,40 +201,38 @@
         <section class="testimonials text-center bg-light container mt-5 mb-5 p-5" id="events">
             <!-- section images -->
             <div class="container">
-                <h2 class="mb-5">What people are saying... {{#if admin}}<a href="#"><i class="fa-solid fa-calendar-plus text-dark"></i></a>{{/if}}</h2>
+                <h2 class="mb-5">What people are saying... {{#if admin}}<a href="/users"><i class="fa-solid fa-calendar-plus text-dark"></i></a>{{/if}}</h2>
                 <div class="row">
+                    {{#if admin}}
+                        {{#each users}}
                     <div class="col-lg-4">
-                       {{#if admin}}<a href="#"><i class="fa-solid fa-trash text-danger"></i></a>{{/if}}
+                          <a href="" class="btn-close p-3"></a>
+                        <div class="testimonial-item mx-auto mb-5 mb-lg-0"> 
+                          
+                         <img class="img-fluid rounded-circle mb-3" width="210" src="data:image/jpeg;base64,{{imagen_base64}}" alt="imagen" />
+                            <h5>{{nombre}}</h5>
+                            <p class="font-weight-light mb-0">"{{descripcion}}"</p>
+                        </div>
+                    </div> 
+                        {{/each}}  
+                    {{else}}
+                        {{#each users}}
+                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0"> 
                             
-                            <img class="img-fluid rounded-circle mb-3" width="210" src="/img/testimonials-1.jpg" alt="..." />
-                            <h5>Margaret E.</h5>
-                            <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                          <img class="img-fluid rounded-circle mb-3" width="210" src="data:image/jpeg;base64,{{imagen_base64}}" alt="imagen" />
+                            <h5>{{nombre}}</h5>
+                            <p class="font-weight-light mb-0">"{{descripcion}}"</p>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" width="210" src="/img/testimonials-2.jpg" alt="..." />
-                            <h5>Fred S.</h5>
-                            <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" width="210"  src="/img/testimonials-3.jpg" alt="..." />
-                            <h5>Sarah W.</h5>
-                            <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
-                        </div>
-                    </div>
+                    </div> 
+                        {{/each}}   
+                    {{/if}}   
                 </div>
             </div>
             <div class="mt-5 p-5 bg-secondary rounded">
                 <h4><a href="" class="text-center text-success" style="text-decoration: none;">Ver mas...</a></h4>
             </div>
         </section>
-        
-   
-
 
         <!-- Footer-->
         <footer class="footer text-center">

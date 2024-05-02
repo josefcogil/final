@@ -64,7 +64,37 @@ exports.autenticado = async(req, res, next)=>{
     if (!token) {
         jwt.verify(token, process.env.JWT_SECRETO, (err, decoded) => {
             if (err) {
-                res.render('index');
+            // Consulta para obtener todas las imágenes
+            const sql = 'SELECT imagen_blob FROM images ORDER BY id DESC LIMIT 4';
+            // Ejecuta la consulta
+            conexion.query(sql, (err, result) => {
+                if (err) {
+                    console.error('Error al recuperar las imágenes:', err);
+                    return res.status(500).send('Error al recuperar las imágenes de la base de datos');
+                }
+                // Convertir las imágenes a base64 antes de pasarlas a la plantilla
+                result.forEach(image => {
+                    image.imagen_base64 = image.imagen_blob.toString('base64');
+                });
+                // Pasa las imágenes convertidas a base64 a la plantilla hbs
+             
+                const sqlUser = 'SELECT * FROM cumple';
+                conexion.query(sqlUser, (err, rows) => {
+                    if (err) {
+                        console.error('Error al obtener los registros de la base de datos:', err);
+                    return res.status(500).send('Error al obtener los registros de la base de datos');
+                            }
+                            rows.forEach(image => {
+                                image.imagen_base64 = image.images_blob.toString('base64');
+                            });
+                    // Si la consulta se realizó con éxito, envía los registros como respuesta
+                    res.render('index', { 
+                        users: rows, 
+                        imagenes: result
+                    });
+        });
+
+            });
                 
             } else {
                 console.log(decoded);
@@ -72,7 +102,36 @@ exports.autenticado = async(req, res, next)=>{
             }
         });
     } else {
-       res.render('index', {admin: true})
+          // Consulta para obtener todas las imágenes
+    const sql = 'SELECT imagen_blob FROM images';
+    // Ejecuta la consulta
+    conexion.query(sql, (err, result) => {
+        if (err) {
+            console.error('Error al recuperar las imágenes:', err);
+            return res.status(500).send('Error al recuperar las imágenes de la base de datos');
+        }
+        // Convertir las imágenes a base64 antes de pasarlas a la plantilla
+        result.forEach(image => {
+            image.imagen_base64 = image.imagen_blob.toString('base64');
+        });
+        // Pasa las imágenes convertidas a base64 a la plantilla hbs
+
+         const sql = 'SELECT * FROM cumple';
+        conexion.query(sql, (err, rows) => {
+            if (err) {
+                console.error('Error al obtener los registros de la base de datos:', err);
+            return res.status(500).send('Error al obtener los registros de la base de datos');
+                    }
+            rows.forEach(image => {
+                image.imagen_base64 = image.images_blob.toString('base64');
+            });
+        // Si la consulta se realizó con éxito, envía los registros como respuesta
+        res.render('index', { 
+            users: rows,
+            imagenes: result,
+            admin: true });
+});
+    });
     }
 } 
 

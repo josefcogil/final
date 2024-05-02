@@ -70,10 +70,10 @@
             </ul>
          </div>
          <div class="portfolio-item row">
-            {{#each users}}
+            {{#each images}}
             <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
                <a href="data:image/jpeg;base64,{{this.imagen_base64}}" class="fancylight popup-btn" data-fancybox-group="light"> 
-                <img class="img-fluid" width="210"  src="data:image/jpeg;base64,{{this.imagen_base64}}" alt="..." />
+                 <img class="img-fluid rounded-3 mb-3" src="data:image/jpeg;base64,{{this.imagen_base64}}" alt="imagen" />
                </a>
             </div> 
             {{/each}}
