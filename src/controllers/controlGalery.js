@@ -1,5 +1,6 @@
 const conexion = require('../server/server');
 const jwt = require('jsonwebtoken');
+const upload = require('../controllers/control-images');
 
 exports.galery = (req, res) => {
     const token = req.cookies.jwt; 
@@ -90,7 +91,7 @@ exports.galeryUser = (req, res) => {
                     });
 
                     // Renderizar la plantilla galeryUsers.hbs con los datos de las imágenes
-                    res.render('users', {
+                    res.render('users-galery', {
                         imagen: info,
                         admin: true
                     });
@@ -116,9 +117,8 @@ exports.galeryUser = (req, res) => {
             });
 
             // Renderizar la plantilla galeryUsers.hbs con los datos de las imágenes
-            res.render('users', {
-                imagen: info
-            });
+            res.render('users-galery', {
+ imagen: info});
 
         });
     }

@@ -17,6 +17,24 @@ routes.get('/login', (req, res)=>{
 routes.get('/register', (req, res)=>{
     res.render('register');
 });
+routes.get('/', controlRutas.autenticado, (req, res)=>{
+    res.render('index');
+});
+routes.get('/images', controlRutas.verificar ,(req, res) => {
+    res.render('imgAdd', { admin: true })
+});
+routes.get('/users',  controlRutas.verificar, (req, res) => {
+    res.render('users', { admin: true })
+});
+
+routes.get('/galery', galery.galery,);
+routes.get('/galery/users', galery.galeryUser,);
+routes.get('/eliminar/:id', deletes.eliminarHomeImg);
+routes.get('/eliminar/galery/images/:id', deletes.eliminarImages);
+routes.get('/eliminar/card/users/:id', deletes.eliminarCard);
+routes.get('/eliminar/home/card/:id', deletes.eliminarHomeCard);
+routes.get('/cerrar', controlRutas.logout);
+routes.post('/login', controlRutas.login);
 routes.post('/images', upload.single('imagen'), (req, res) => {
     // Verifica si alguno de los campos está vacío
     if (!req.file) {
@@ -44,10 +62,10 @@ routes.post('/images', upload.single('imagen'), (req, res) => {
     });
     
 });
-routes.post('/users', upload.single('imagen'), (req, res) => {
+routes.post('/users',upload.single('imagen'), (req, res) => {
         // Verifica si alguno de los campos está vacío
         if (!req.file || !req.body.nombre || !req.body.descrip) {
-            return  res.render('imgUsers', {
+            return  res.render('users', {
                 alert: true,
                 icon: 'info',
                 text: '¡Llene todos los campos!',
@@ -72,24 +90,6 @@ routes.post('/users', upload.single('imagen'), (req, res) => {
             res.redirect('/users'); // Redirige
         });
 });
-routes.get('/', controlRutas.autenticado, (req, res)=>{
-    res.render('index');
-});
-routes.get('/images', controlRutas.verificar ,(req, res) => {
-    res.render('imgAdd', { admin: true })
-});
-routes.get('/users', controlRutas.verificar ,(req, res) => {
-    res.render('imgUsers', { admin: true })
-});
-
-routes.get('/galery', galery.galery,);
-routes.get('/galery/users', galery.galeryUser,);
-routes.get('/eliminar/:id', deletes.eliminarHomeImg);
-routes.get('/eliminar/galery/images/:id', deletes.eliminarImages);
-routes.get('/eliminar/card/users/:id', deletes.eliminarCard);
-routes.get('/eliminar/home/card/:id', deletes.eliminarHomeCard);
-routes.post('/login', controlRutas.login);
-routes.get('/cerrar', controlRutas.logout);
 
 //Exportar routes
 module.exports = routes;

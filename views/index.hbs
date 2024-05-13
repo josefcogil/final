@@ -46,31 +46,19 @@
                              data-bs-toggle="dropdown" aria-expanded="false">Más</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">Eventos</a></li>
-                                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Activity Log</a></li>                           
                                 <li><a class="dropdown-item" href="#!">Atencion al ciudadano</a></li>
+                                  {{#if admin}}
+                                    <li><hr class="dropdown-divider" /></li>  
+                                    <li><a class="dropdown-item" href="/galery/users">Glaeria de usuarios</a></li>
+                                    <li><a class="dropdown-item" href="/users">Agregar usuario</a></li>
+                                    <li><a class="dropdown-item" href="/galery">Galeria de fotografias</a></li>
+                                    <li><a class="dropdown-item" href="/images">Agregar fotografias</a></li>
+                                    <li><hr class="dropdown-divider" /></li>  
+                                    <li><a class="dropdown-item" href="/cerrar">Cerrar sesión</a></li>
+                                  {{/if}}
                             </ul>
                         </li>
-
-                        <!--  -->
-                        {{#if admin}}
-                        <!--  -->
-                        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4 mt-2">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" 
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user fa-fw"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#!">Configuraciones</a></li>
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li><a class="dropdown-item" href="/cerrar">Cerrar sesión</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <!--  -->
-                        {{/if}}
-                        
-                        
                     </ul>
                 </div>
             </div>
