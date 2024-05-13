@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Freelancer - Start Bootstrap Theme</title>
+        <title>Freelancer - Theme</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -170,7 +170,7 @@
                       {{#if admin}}
                         {{#each imagenes}}
                         <div class="col-lg-6">
-                            <a href="#" class="btn-close p-3"></a>
+                            <a href="/eliminar/{{this.id}}" class="btn-close p-3"></a>
                             <div class="position-relative mb-5"> 
                                 <img class="img-fluid rounded-3 mb-3" src="data:image/jpeg;base64,{{this.imagen_base64}}" alt="imagen" />
                                 <p class="h3 fw-bolder text-decoration-none link-dark stretched-link">Project name</p>
@@ -185,10 +185,11 @@
                                 <p class="h3 fw-bolder text-decoration-none link-dark stretched-link">Project name</p>
                             </div>
                         </div>
+               
                         {{/each}}
                         {{/if}}
                           <div class="mt-5 p-5 bg-secondary rounded">
-                            <h4 class="text-center"><a href="" class="text-success" style="text-decoration: none;">Ver mas...</a></h4>
+                            <h4 class="text-center"><a href="/galery" class="text-success" style="text-decoration: none;">Ver mas...</a></h4>
                         </div>
                     </div>
                 </div>
@@ -206,7 +207,7 @@
                     {{#if admin}}
                         {{#each users}}
                     <div class="col-lg-4">
-                          <a href="" class="btn-close p-3"></a>
+                          <a href="/eliminar/home/card/{{this.id}}" class="btn-close p-3"></a>
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0"> 
                           
                          <img class="img-fluid rounded-circle mb-3" width="210" src="data:image/jpeg;base64,{{imagen_base64}}" alt="imagen" />
@@ -230,7 +231,7 @@
                 </div>
             </div>
             <div class="mt-5 p-5 bg-secondary rounded">
-                <h4><a href="" class="text-center text-success" style="text-decoration: none;">Ver mas...</a></h4>
+                <h4><a href="/galery/users" class="text-center text-success" style="text-decoration: none;">Ver mas...</a></h4>
             </div>
         </section>
 

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Modern Business - Start Bootstrap Template</title>
+        <title>Modern Business - Template</title>
             <link rel="stylesheet" href="css/galery.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -29,27 +29,22 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                    <a class="navbar-brand" href="index.html">Contraloria</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/">inicio</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Más</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                                     <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                                    <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-                                    <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
+                                    <li><a class="dropdown-item" href="/galery/users">Galeria de usuarios</a></li>
+                                     {{#if admin}}
+                                      <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="/images">Agregar fotografia</a></li>
+                                    <li><a class="dropdown-item" href="/users">Agregar usuario</a></li>
+                                    <li><a class="dropdown-item" href="/cerrar">cerrar sesión</a></li>
+                                    {{/if}}
                                 </ul>
                             </li>
                         </ul>
@@ -70,16 +65,28 @@
             </ul>
          </div>
          <div class="portfolio-item row">
+            {{#if admin}}
             {{#each images}}
+            
+            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm"> 
+                 <a href="/eliminar/galery/images/{{this.id}}" class="btn-close" style="display: flex;"></a>
+               <a href="data:image/jpeg;base64,{{this.imagen_base64}}" class="fancylight popup-btn" data-fancybox-group="light"> 
+                 <img class="img-fluid rounded-3 mb-3" src="data:image/jpeg;base64,{{this.imagen_base64}}" alt="imagen" />
+               </a>
+            </div> 
+            {{/each}}
+            {{else}}
+              {{#each images}}
             <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
                <a href="data:image/jpeg;base64,{{this.imagen_base64}}" class="fancylight popup-btn" data-fancybox-group="light"> 
                  <img class="img-fluid rounded-3 mb-3" src="data:image/jpeg;base64,{{this.imagen_base64}}" alt="imagen" />
                </a>
             </div> 
             {{/each}}
+            {{/if}}
          </div>
       </div>
-            </select>
+         </section>
         </main>
         <!-- Footer-->
         <footer class="bg-dark py-4 mt-auto">
@@ -125,3 +132,5 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
+
+
