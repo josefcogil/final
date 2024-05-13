@@ -28,7 +28,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html">Contraloria</a>
+                    <a class="navbar-brand" href="/">Contraloria</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -61,18 +61,20 @@
         <div class="card-body">
             <p class="card-title fw-bold">{{nombre}}</p>
             <p class="card-text ">{{descripcion}}</p>
-             <a href="#" class="btn btn-danger">Eliminar</a>
+             <a href="/eliminar/card/users/{{this.id}}" class="btn btn-danger">Eliminar</a>
         </div>
     </div>
         {{/each}}
     {{else}}
+     {{#each imagen}}
     <div class="card col-md-3 m-1" style="width: 18rem;">
-        <img src="data:image/jpeg;base64,{{imagen_base64}}" alt="imagen"  class="card-img-top">
+        <img src="data:image/jpeg;base64,{{imagen_base64}}" alt="imagen"  class="card-img-top p-1">
         <div class="card-body">
-            <p class="card-title">{{nombre}}</p>
-            <p class="card-text">{{descripcion}}</p>
+            <h5 class="card-title" style="font-weight: bold;">{{nombre}}</h5>
+            <p class="card-text">"{{descripcion}}"</p>
         </div>
     </div>
+    {{/each}}
     {{/if}}
     </div>
 
