@@ -38,17 +38,17 @@ exports.login = async (req, res) => {
                             text: '¡Usuario o contraseña incorrecto!',
                             title: 'ADVERTENCIA'
                           })
-    
+                
                         }
-                }else{
-                    //usuario incorrecto
-                  res.render('login', {
-                    alert: true,
-                    icon: 'error',
-                    text: '¡Usuario o contraseña incorrecto!',
-                    title: 'ADVERTENCIA'
-                  })
-            }
+                            }else{
+                            //usuario incorrecto
+                            res.render('login', {
+                                alert: true,
+                                icon: 'error',
+                                text: '¡Usuario o contraseña incorrecto!',
+                                title: 'ADVERTENCIA'
+                            })
+                        }
         });
         }
        

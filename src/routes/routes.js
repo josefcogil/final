@@ -14,6 +14,12 @@ const deletes = require('../server/eliminar');
 routes.get('/login', (req, res)=>{
     res.render('login');
 });
+routes.get('/registrar', (req, res)=>{
+    res.render('register');
+});
+routes.get('/aac', (req, res)=>{
+    res.render('atencion-ciudadano');
+});
 routes.get('/register', (req, res)=>{
     res.render('register');
 });
