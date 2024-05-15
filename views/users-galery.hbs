@@ -56,7 +56,7 @@
         {{!-- ============================================= --}}
     {{#if admin}}
         {{#each imagen}}
-    <div class="card col-md-3 m-1" style="width: 18rem;">
+    <div class="card col-md-3 m-1 shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
         <img src="data:image/jpeg;base64,{{imagen_base64}}" alt="imagen"  class="card-img-top">
         <div class="card-body">
             <p class="card-title fw-bold">{{nombre}}</p>
@@ -67,7 +67,7 @@
         {{/each}}
     {{else}}
      {{#each imagen}}
-    <div class="card col-md-3 m-1" style="width: 18rem;">
+    <div class="card col-md-3 m-1 shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
         <img src="data:image/jpeg;base64,{{imagen_base64}}" alt="imagen"  class="card-img-top p-1">
         <div class="card-body">
             <h5 class="card-title" style="font-weight: bold;">{{nombre}}</h5>
