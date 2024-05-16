@@ -23,9 +23,7 @@ routes.get('/aac', (req, res)=>{
 routes.get('/register', (req, res)=>{
     res.render('register');
 });
-routes.get('/', controlRutas.autenticado, (req, res)=>{
-    res.render('index');
-});
+routes.get('/', controlRutas.autenticado);
 routes.get('/images', controlRutas.verificar ,(req, res) => {
     res.render('imgAdd', { admin: true })
 });
@@ -38,7 +36,7 @@ routes.get('/galery/users', galery.galeryUser,);
 routes.get('/eliminar/:id', deletes.eliminarHomeImg);
 routes.get('/eliminar/galery/images/:id', deletes.eliminarImages);
 routes.get('/eliminar/card/users/:id', deletes.eliminarCard);
-routes.get('/eliminar/home/card/:id', deletes.eliminarHomeCard);
+routes.delete('/eliminar/home/card/:id', deletes.eliminarHomeCard);
 routes.get('/cerrar', controlRutas.logout);
 routes.post('/login', controlRutas.login);
 routes.post('/images', upload.single('imagen'), (req, res) => {
